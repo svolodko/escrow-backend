@@ -1,0 +1,49 @@
+{
+  "name": "escrowescrow",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "SET NODE_ENV=production& babel-node ./bin/www",
+    "start-dev": "SET NODE_ENV=development& SET DEBUG=escrowescrow:* & nodemon --exec babel-node ./bin/www",
+    "db-migrate": "node_modules/.bin/sequelize db:migrate",
+    "db-seed": "node_modules/.bin/sequelize db:seed:all",
+    "db-migrate-test": "SET NODE_ENV=test& node_modules\\.bin\\sequelize db:migrate",
+    "test": "mocha",
+    "eslint": "./node_modules/.bin/eslint . --ext .js -f table",
+    "eslint-fix": "./node_modules/.bin/eslint . --ext .js -f table --fix"
+  },
+  "author": "Sergey Volodko <svolodko@gmail.com>",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "@babel/runtime": "^7.5.5",
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "express": "~4.16.1",
+    "helmet": "^3.18.0",
+    "http-errors": "~1.6.3",
+    "jsonwebtoken": "^8.5.1",
+    "morgan": "~1.9.1",
+    "mysql2": "^1.6.5",
+    "pug": "^2.0.4",
+    "sequelize": "^5.10.1",
+    "sequelize-cli": "^5.5.0",
+    "swagger-jsdoc": "^3.3.0",
+    "swagger-ui-express": "^4.0.7"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.5.4",
+    "@babel/node": "^7.5.5",
+    "@babel/plugin-transform-runtime": "^7.5.5",
+    "@babel/preset-env": "^7.5.4",
+    "@babel/register": "^7.5.5",
+    "babel-eslint": "^10.0.2",
+    "chai": "^4.2.0",
+    "chai-http": "^4.3.0",
+    "eslint": "^6.1.0",
+    "eslint-config-airbnb-base": "^13.2.0",
+    "eslint-plugin-babel": "^5.3.0",
+    "eslint-plugin-import": "^2.18.2",
+    "mocha": "^6.1.4",
+    "nodemon": "^1.19.1"
+  }
+}

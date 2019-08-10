@@ -1,0 +1,5 @@
+**/*.spec.js
+/node_modules/*.js
+/test/*.js
+/migrations/*.js
+/seeders/*.js

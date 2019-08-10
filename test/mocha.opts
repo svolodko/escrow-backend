@@ -1,0 +1,8 @@
+./app.spec
+./routes
+--require @babel/register
+--require ./test/common.js
+--recursive
+--bail
+--timeout 10000
+--exit

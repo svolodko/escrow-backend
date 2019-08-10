@@ -1,0 +1,72 @@
+#!/usr/bin/env node
+
+/**
+ * Module dependencies.
+ */
+const https = require('https');
+const fs = require('fs');
+const debug = require('debug')('escrowescrow:server');
+const app = require('../app');
+const config = require('../config/config');
+
+
+app.set('port', config.apiPort);
+
+/**
+ * Create HTTP server.
+ */
+
+const server = https.createServer({
+  key: fs.readFileSync(config.ssl.keyFile),
+  cert: fs.readFileSync(config.ssl.certFile),
+}, app);
+
+/**
+ * Listen on provided port, on all network interfaces.
+ */
+
+/* eslint no-use-before-define: ["error", { "functions": false }] */
+
+server.listen(config.apiPort);
+server.on('error', onError);
+server.on('listening', onListening);
+
+/**
+ * Event listener for HTTP server "error" event.
+ */
+
+function onError(error) {
+  if (error.syscall !== 'listen') {
+    throw error;
+  }
+
+  const bind = typeof port === 'string'
+    ? `Pipe ${config.apiPort}`
+    : `Port ${config.apiPort}`;
+
+  // handle specific listen errors with friendly messages
+  switch (error.code) {
+    case 'EACCES':
+      console.error(`${bind} requires elevated privileges`);
+      process.exit(1);
+      break;
+    case 'EADDRINUSE':
+      console.error(`${bind} is already in use`);
+      process.exit(1);
+      break;
+    default:
+      throw error;
+  }
+}
+
+/**
+ * Event listener for HTTP server "listening" event.
+ */
+
+function onListening() {
+  const addr = server.address();
+  const bind = typeof addr === 'string'
+    ? `pipe ${addr}`
+    : `port ${addr.port}`;
+  debug(`Listening on ${bind}`);
+}
