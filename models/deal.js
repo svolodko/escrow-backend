@@ -10,6 +10,9 @@
  *     id:
  *       type: integer
  *       example: 3420116506
+ *     network:
+ *       type: string
+ *       example: eos
  *     created_by:
  *       type: string
  *       example: escrowbob111
@@ -50,6 +53,7 @@ module.exports = (sequelize, DataTypes) => {
       primaryKey: true,
       autoIncrement: true,
     },
+    network: DataTypes.STRING,
     created_by: DataTypes.STRING(13),
     description: DataTypes.STRING,
     price: DataTypes.JSON,

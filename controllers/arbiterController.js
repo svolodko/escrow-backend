@@ -79,6 +79,7 @@ class ArbiterController {
     try {
       await models.arbiter.create({
         account: data.account,
+        network: data.network,
         contact_name: data.contact_name,
         email: data.email,
         description: data.description,
@@ -120,7 +121,7 @@ class ArbiterController {
           message: 'Arbiter not found.',
         });
       }
-      const updateFields = ['contact_name', 'email', 'description',
+      const updateFields = ['network', 'contact_name', 'email', 'description',
         'website', 'phone', 'iso_country', 'processed_deals', 'is_active'];
       updateFields.forEach((field) => {
         if (field in req.body) {

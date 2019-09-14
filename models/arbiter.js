@@ -13,6 +13,9 @@
  *     account:
  *       type: string
  *       example: escrowchris1
+ *     network:
+ *       type: string
+ *       example: eos
  *     contact_name:
  *       type: string
  *       example: Chris
@@ -44,6 +47,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING(13),
       primaryKey: true,
     },
+    network: DataTypes.STRING,
     contact_name: DataTypes.STRING,
     email: DataTypes.STRING,
     description: DataTypes.STRING,
