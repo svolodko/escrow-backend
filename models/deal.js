@@ -10,6 +10,9 @@
  *     id:
  *       type: integer
  *       example: 3420116506
+ *     deal_id:
+ *       type: integer
+ *       example: 3420116506
  *     network:
  *       type: string
  *       example: eos
@@ -53,6 +56,7 @@ module.exports = (sequelize, DataTypes) => {
       primaryKey: true,
       autoIncrement: true,
     },
+    deal_id: DataTypes.BIGINT,
     network: DataTypes.STRING,
     created_by: DataTypes.STRING(13),
     description: DataTypes.STRING,

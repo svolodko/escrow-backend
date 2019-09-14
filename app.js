@@ -6,6 +6,7 @@ import createError from 'http-errors';
 import cookieParser from 'cookie-parser';
 import logger from 'morgan';
 import helmet from 'helmet';
+import cors from 'cors';
 import indexRouter from './routes';
 
 const app = express();
@@ -15,6 +16,8 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
 app.use(helmet());
+app.use(cors());
+
 app.use(logger('dev'));
 app.use(express.json({ strict: false }));
 app.use(express.urlencoded({ extended: false }));

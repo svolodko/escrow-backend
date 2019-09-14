@@ -76,6 +76,7 @@ class DealController {
     const data = req.body;
     try {
       const result = await models.deal.create({
+        deal_id: data.deal_id,
         network: data.network,
         created_by: data.created_by,
         description: data.contact_name,
@@ -121,7 +122,7 @@ class DealController {
           message: 'Deal not found.',
         });
       }
-      const updateFields = ['network', 'created_by', 'description', 'price', 'buyer',
+      const updateFields = ['deal_id', 'network', 'created_by', 'description', 'price', 'buyer',
         'seller', 'arbiter', 'days', 'funded', 'expires', 'flags', 'delivery_memo'];
       updateFields.forEach((field) => {
         if (field in req.body) {
